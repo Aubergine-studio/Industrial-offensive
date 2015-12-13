@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MineView : MonoBehaviour {
+public class WarehouseView : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {

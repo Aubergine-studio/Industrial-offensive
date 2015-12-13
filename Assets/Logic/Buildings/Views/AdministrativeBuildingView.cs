@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MineModel : BaseModel
+public class AdministrativeBuildingView : BaseView
 {
 
     // Use this for initialization
