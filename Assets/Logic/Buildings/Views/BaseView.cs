@@ -3,5 +3,5 @@ using System.Collections;
 
 public class BaseView : MonoBehaviour
 {
-    private BaseBuildingController _buildingController;
+    protected BaseBuildingController _buildingController;
 }

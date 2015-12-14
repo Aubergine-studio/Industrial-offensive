@@ -1,15 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class WarehouseView : MonoBehaviour {
+public class WarehouseView : BaseView
+{
+    [SerializeField] private GameObject container;
+    [SerializeField] private GameObject warehauseLabel;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    public WarehouseController Controller { get { return this._buildingController as WarehouseController;} }
+    
+    private void Start()
+    {
+        _buildingController = WarehouseController.Instance.RregisterView(this);
+    }
 }

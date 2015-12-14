@@ -6,8 +6,7 @@ using System.Collections;
 [Serializable]
 public class MineModel : BaseModel
 {
-    [SerializeField]
-    protected float miningDepth = 100f;
-    [SerializeField]
-    protected RawMaterial RawMaterial;
+    [SerializeField] public float miningDepth = 100f;
+    [SerializeField] public float productionPerSecondPerEmploye = 10f;
+    [SerializeField] public RawMaterial RawMaterial;
 }

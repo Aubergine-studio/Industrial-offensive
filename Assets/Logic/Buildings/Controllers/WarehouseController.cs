@@ -1,19 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Linq;
 
 public class WarehouseController : BaseBuildingController
 {
     public static WarehouseController Instance { get; private set; }
 
     public WarehouseModel Model { get { return this._buildingModel as WarehouseModel; } }
+    public WarehouseView View { get { return this._BuildingView as WarehouseView;} }
 
     protected override void Awake()
     {
-        base.Awake();
-
         if (Instance == null)
         {
             Instance = this;
+            Model.StorageSlots.Clear();
         }
         else
         {
@@ -21,15 +22,27 @@ public class WarehouseController : BaseBuildingController
         }
     }
 
-    public void RegisterStorage(string rawMaterialName)
+    public override BaseBuildingController RregisterView(BaseView view)
     {
-        StorageSlot slot = new StorageSlot
+        if (_BuildingView == null && view is WarehouseView)
+        {
+            _BuildingView = view;
+        }
+        return base.RregisterView(view);
+    }
+
+    public StorageSlot RegisterStorage(string rawMaterialName)
+    {
+        StorageSlot slot = 
+        Model.StorageSlots.SingleOrDefault(m => m.RawMaterialName == rawMaterialName) ?? new StorageSlot
         {
             RawMaterialName = rawMaterialName,
             maxCapacity = Model.maxStorageSlotCapacity
         };
 
         Model.StorageSlots.Add(slot);
+
+        return slot;
     }
 }
  
