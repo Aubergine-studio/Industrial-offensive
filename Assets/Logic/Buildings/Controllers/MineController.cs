@@ -7,17 +7,16 @@ public class MineController : BaseBuildingController
 
     protected override void Start()
     {
-        Slot = WarehouseController.Instance.RegisterStorage(Model.name);
+        Slot = WarehouseController.Instance.RegisterStorage(Model.RawMaterial.Name);
     }
 
     protected override void OnTimerTick()
     {
         if (Slot.maxCapacity > Slot.collected)
         {
-            Slot.collected += Model.productionPerSecondPerEmploye * Model.NumberOfEmployees;
+            Slot.collected += Model.productionPerSecondPerEmploye * 
+                Model.NumberOfEmployees * 
+                Model.RawMaterial.Price;
         }
-
-        Debug.ClearDeveloperConsole();
-        Debug.Log(gameObject.name + ": " + Model.RawMaterial.Name + ": " + Slot.maxCapacity + "/" + Slot.collected);
     }
 }

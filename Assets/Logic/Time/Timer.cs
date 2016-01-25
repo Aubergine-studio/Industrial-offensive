@@ -31,7 +31,6 @@ public class Timer : MonoBehaviour
 	        {
 	            OnClik();
 	        }
-	        Debug.Log("Pow!");
 	    }
 	}
 }
